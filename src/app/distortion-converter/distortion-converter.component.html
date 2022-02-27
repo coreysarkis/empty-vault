@@ -1,0 +1,86 @@
+<div class="container">
+    <!-- Heading -->
+    <h2>{{componentName}}</h2>
+    <p>Convert the distortion level of an audio signal between distortion attenuation (dB) and distortion factor (%).</p>
+    <!-- Fields -->
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="input-group my-1">
+                <span class="input-group-text distortion">distortion attenuation</span>
+                <input #attenuation class="form-control" id="attenuationInput" (keyup)="convertDB(attenuation.value)">
+                <span class="input-group-text unit">dB</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group my-1">
+                <span class="input-group-text distortion">distortion factor</span>
+                <input #factor class="form-control clean" id="factorInput" (keyup)="convertPercent(factor.value)">
+                <span class="input-group-text unit">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Clear Button -->
+        <div class="col-auto">
+            <div class="my-1">
+                <button class="btn" type="button" (click)="reset()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x" viewBox="4.5 2.25 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Warning -->
+        <div class="col">
+            <!--<p class="warning" id=><code class="warning_unit">{{unit}}</code> {{warning}} <span class="spacer">spacer</span></p>-->
+            <p id="warning"></p>
+        </div>
+    </div>
+    <!--<div class="row mt-4">
+        <div class="col">-->
+            <!-- Explanation -->
+            <!--<p class="my-1">Can be used for total harmonic distortion (THD) as well as intermodulation distortion (IMD).</p>
+            <p class="my-1"><span class="font-monospace bold-light">THD: </span>the ratio of the sum of the power of harmonics to the power of their fundamental frequency</p>
+            <p class="font-monospace my-1 example">• harmonic: multiple of the fundamental</p>
+            <p class="font-monospace my-1 example">• e.g., f = 100 Hz, h1 = 200 Hz, h2 = 300 Hz, h3 = 400 Hz, ...</p>
+            <p class="my-1"><span class="font-monospace bold-light">IMD: </span>the ratio of the power of third order intermodulation products to the power of their fundamental frequency</p>
+            <p class="font-monospace my-1 example">• occurs in non-linear systems with signals containing two or more different frequencies</p>
+            <p class="font-monospace my-1 example">• intermodulation products: the sum and difference of the fundamental frequencies and lower order products</p>
+            <p class="font-monospace my-1 example">• e.g., 1st order frequencies (fundamentals): f₁ & f₂</p>
+            <div class="row">
+                <div class="col-auto">
+                    <p class="font-monospace my-1 example">• IMD2 =</p>
+                </div>
+                <div class="col">
+                    <p class="font-monospace my-1 example">f₂ - f₁</p>
+                    <p class="font-monospace my-1 example">f₂ + f₁</p>
+                    <p class="font-monospace my-1 example">2f₁</p>
+                    <p class="font-monospace my-1 example">2f₂</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <p class="font-monospace my-1 example">• IMD3 =</p>
+                </div>
+                <div class="col">
+                    <p class="font-monospace my-1 example">2f₁ - f₂</p>
+                    <p class="font-monospace my-1 example">2f₂ - f₁</p>
+                    <p class="font-monospace my-1 example">2f₁ + f₂</p>
+                    <p class="font-monospace my-1 example">2f₂ + f₁</p>
+                    <p class="font-monospace my-1 example">3f₁</p>
+                    <p class="font-monospace my-1 example">3f₂</p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Calculation -->
+    <!--<div class="row mt-4">
+        <div class="col">
+            <h3 class="calculation">Calculation</h3>
+            <p class="my-1"><code class="calculation">dB → %: 10^(dB/20) * 100</code></p>
+            <p class="my-1"><code class="calculation">% → dB: 20 * log</code><span class="calculation">₁₀</span><code class="calculation">(%/100)</code></p>
+        </div>
+    </div>-->
+</div>

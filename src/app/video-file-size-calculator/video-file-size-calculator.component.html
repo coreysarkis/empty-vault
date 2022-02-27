@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+    <body>
+        <div class="container">
+            <!-- Heading -->
+            <h1>Video File Size Calculator</h1>
+            <p class="my-1">
+                Calculate the size of a video file based on its resolution, bit depth, frame rate, and length. The frame size, bitrate, <span class="bold-barely">#</span> pixels, and <span class="bold-barely">#</span> frames are provided as well.
+            </p>
+            <p class="my-1">
+                If the video has undergone <span class="bold-light">compression</span>, input the compressed bitrate and length to calculate the file size.
+            </p>
+            <div class="row mt-4">
+                <!-- Inputs -->
+                <div class="col-md left">
+                    <div class="input-group my-1">
+                        <input #px_width class="form-control disabled clean" type="number" id="px-width" placeholder="pixel width"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">
+                    </div>
+                </div>
+                <div class="col-md mid">
+                    <div class="input-group my-1">
+                        <input #px_height class="form-control disabled clean" type="number" id="px-height" placeholder="pixel height"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">
+                    </div>
+                </div>
+                <div class="col-md right">
+                    <div class="input-group my-1">
+                        <input #bit_depth class="form-control disabled clean" type="number" id="bit-depth" placeholder="bit depth"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">
+                        <span class="input-group-text" id="bit-depth-addon">bit</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md left">
+                    <div class="input-group my-1">
+                        <input #fps class="form-control disabled clean" type="number" id="fps" placeholder="frame rate"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">
+                        <span class="input-group-text" id="fps-addon">fps</span>
+                    </div>
+                </div>
+                <div class="col-md-7 right">
+                    <div class="input-group my-1">
+                        <span class="input-group-text">length</span>
+                        <input #hr class="form-control length clean" type="number" id="hr" placeholder="hr"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">
+                        <input #min class="form-control length clean" type="number" id="min" placeholder="min"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">
+                        <input #sec class="form-control length clean" type="number" id="sec" placeholder="sec"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7 left">
+                    <div class="input-group my-1">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" id="checkbox" (click)="compressionAccess()">
+                        </div>
+                        <input #comp_bitrate class="form-control comp-bitrate clean" type="number" id="comp-bitrate" placeholder="compressed bitrate"
+                        (keyup.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)"
+                        (keyup.shift.enter)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">
+                        <div>
+                            <select #comp_bitrate_unit class="form-select comp-bitrate-unit comp-bitrate rounded-0 rounded-end" id="comp-bitrate-unit">
+                                <option selected value="Mb/s">Mb/s</option>
+                                <option value="Gb/s">Gb/s</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mid">
+                    <div class="d-grid my-1">
+                        <button class="btn calculate" type="button" (click)="calculate(px_width.value, px_height.value, bit_depth.value, fps.value, hr.value, min.value, sec.value, comp_bitrate.value, comp_bitrate_unit.value)">calculate</button>
+                    </div>
+                </div>
+                <!-- Clear Button -->
+                <div class="col-auto right">
+                    <div class="my-1">
+                        <button class="btn clear" type="button" (click)="reset()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x" viewBox="3.5 1.5 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Outputs -->
+            <div class="row mt-3">
+                <div class="left" id="file-size-col">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text addon">{{file_size_addon}}</span>
+                        <input class="form-control" type="text" id="file-size" placeholder="{{file_size}} {{file_size_unit}}" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-md mid">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text">{{frame_size_addon}}</span>
+                        <input class="form-control" type="text" id="frame-size" placeholder="{{frame_size}} {{frame_size_unit}}" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-md right">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text addon">{{bitrate_addon}}</span>
+                        <input class="form-control" type="text" id="bitrate" placeholder="{{bitrate}} {{bitrate_unit}}" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 left">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text addon">{{pixels_addon}}</span>
+                        <input class="form-control" type="text" id="pixels" placeholder="{{pixels}}" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-md-5 right">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text addon">{{frames_addon}}</span>
+                        <input class="form-control" type="text" id="frames" placeholder="{{frames}}" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

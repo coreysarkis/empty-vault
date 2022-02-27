@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+    <body>
+        <div class="container">
+            <!-- Heading -->
+            <h1>Equalizer Filter Calculator</h1>
+            <p class="my-1">
+                Calculate the quality factor that sets an equalizer filter to span across a desired frequency band. Input 
+                either (center frequency & bandwidth) or (lower & upper frequencies).
+            </p>
+            <p class="my-1">To <span class="bold-light">calculate the center frequency</span> of two given frequencies, 
+                select the lower & upper option and input the corresponding frequencies.
+            </p>
+            <!-- Inputs -->
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="calculation-inputs" id="center_bandwidth" checked
+                        (click)="switch()">
+                        <label class="form-check-label center_bandwidth" for="center_bandwidth">center & bandwidth</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="calculation-inputs" id="lower_upper"
+                        (click)="switch()">
+                        <label class="form-check-label lower_upper" for="lower_upper">lower & upper</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md left">
+                    <div class="input-group my-1">
+                        <input #input1 class="form-control clean" type="number" id="input1" placeholder="{{placeholder1}}"
+                            (keyup.enter)="calculate(input1.value, input2.value)"
+                            (keyup.shift.enter)="calculate(input1.value, input2.value)">
+                        <span class="input-group-text">Hz</span>
+                    </div>
+                </div>
+                <div class="col-md mid">
+                    <div class="input-group my-1">
+                        <input #input2 class="form-control clean" type="number" id="input2" placeholder="{{placeholder2}}"
+                            (keyup.enter)="calculate(input1.value, input2.value)"
+                            (keyup.shift.enter)="calculate(input1.value, input2.value)">
+                        <span class="input-group-text">Hz</span>
+                    </div>
+                </div>
+                <div class="col-md-3 right">
+                    <div class="d-grid my-1">
+                        <button class="btn calculate" type="button" (click)="calculate(input1.value, input2.value)">calculate</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Output -->
+            <div class="row mt-3">
+                <div class="col-md left">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text q-factor-addon">{{q_factor_addon}}</span>
+                        <input class="form-control" type="text" id="q-factor" placeholder="{{q_factor}}" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-md mid">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text addon">{{freq1_addon}}</span>
+                        <input class="form-control" type="text" id="freq1" placeholder="{{freq1}}" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-md right">
+                    <div class="input-group output my-1">
+                        <span class="input-group-text addon">{{freq2_addon}}</span>
+                        <input class="form-control" type="text" id="freq2" placeholder="{{freq2}}" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

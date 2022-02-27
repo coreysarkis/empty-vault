@@ -1,0 +1,42 @@
+.header {
+    color: #6c757d;
+}
+
+tr {
+    height: 42px;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.frequency {
+    font-weight: 500;
+}
+
+.monospace {
+    display: inline-block;
+    width: 10px;
+}
+
+.monospace-1 {
+    display: inline-block;
+    width: 9px;
+}
+
+.hiding {
+    color: white;
+}
+
+.table-hover tbody tr:hover td.hiding, .table-hover tbody tr:focus td.hiding {
+    color: #adb5bd;
+}
+
+.table-hover tbody tr:focus {
+    outline: none;
+}
+
+.details {
+    color: #495057;
+    font-size: 15px;
+}

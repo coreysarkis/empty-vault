@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <h2>Audio</h2>
+                <div>
+                    <div class="list-group">
+                        <a *ngFor="let data of audioComponentData" href="{{data.path}}" class="list-group-item list-group-item-action">{{data.name}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Display</h2>
+                <div>
+                    <div class="list-group">
+                        <a *ngFor="let data of displayComponentData" href="{{data.path}}" class="list-group-item list-group-item-action">{{data.name}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Video</h2>
+                <div>
+                    <div class="list-group">
+                        <a *ngFor="let data of videoComponentData" href="{{data.path}}" class="list-group-item list-group-item-action">{{data.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
