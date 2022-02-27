@@ -23,7 +23,6 @@ const videoComponentData: any = [
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'app-root', component: HomeComponent },
 
   { path: audioComponentData[0].path, component: DistortionConverterComponent },
   { path: audioComponentData[1].path, component: EqualizerFilterCalculatorComponent },
@@ -35,7 +34,7 @@ const routes: Routes = [
 ];
 
 function getPathName(displayName: string): string {
-  return /*displayName.toLowerCase().replaceAll(' ', '-')*/ '#';
+  return /*displayName.toLowerCase().replaceAll(' ', '-')*/ '';
 }
 
 export { audioComponentData, displayComponentData, videoComponentData }
